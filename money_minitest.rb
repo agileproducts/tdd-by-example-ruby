@@ -14,4 +14,9 @@ class TestDollar < Minitest::Test
     assert_equal 15, dollars.amount
   end
 
+  def test_equality
+    assert Dollar.new(5).equals(Dollar.new(5))
+    refute Dollar.new(5).equals(Dollar.new(6))
+  end
+
 end

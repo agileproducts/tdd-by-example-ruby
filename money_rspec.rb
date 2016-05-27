@@ -12,4 +12,9 @@ describe Dollar do
     expect(dollars.amount).to eql(15)
   end
 
+  it "should be able to tell two amounts are equal" do
+    expect(Dollar.new(5).equals(Dollar.new(5))).to be true
+    expect(Dollar.new(5).equals(Dollar.new(6))).to be false
+  end
+
 end
