@@ -1,4 +1,5 @@
 require 'rake/testtask'
+require 'rspec/core/rake_task'
 
 desc "says hello"
 task :hello do
@@ -7,6 +8,11 @@ end
 
 Rake::TestTask.new("test:minitest") do |t|
   t.pattern = "*_minitest.rb"
+  t.verbose = true
+end
+
+RSpec::Core::RakeTask.new("test:rspec") do |t|
+  t.pattern = "*_rspec.rb"
   t.verbose = true
 end
 
