@@ -1,0 +1,13 @@
+require 'rake/testtask'
+
+desc "says hello"
+task :hello do
+  puts "bob"
+end
+
+Rake::TestTask.new("test:minitest") do |t|
+  t.pattern = "*_minitest.rb"
+  t.verbose = true
+end
+
+
