@@ -1,4 +1,4 @@
-class Dollar
+class Money
   attr_reader :amount
 
   def initialize(amount)
@@ -15,19 +15,10 @@ class Dollar
 
 end
 
-class Franc
-  attr_reader :amount
+class Dollar < Money
 
-  def initialize(amount)
-    @amount = amount
-  end
+end
 
-  def times(multiplier)
-    return self.class.new(@amount * multiplier)
-  end
-
-  def ==(object)
-    return @amount == object.amount
-  end
-
+class Franc < Money
+  
 end

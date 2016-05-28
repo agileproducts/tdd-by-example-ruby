@@ -21,7 +21,7 @@ class TestDollar < Minitest::Test
 
 end
 
-class TestFrance < Minitest::Test
+class TestFranc < Minitest::Test
 
   def setup
     @fivefrancs = Dollar.new(5)
@@ -30,6 +30,11 @@ class TestFrance < Minitest::Test
   def test_multiplication
     tenfrancs = @fivefrancs.times(2)
     assert_equal Franc.new(10), tenfrancs
+  end
+
+  def test_equality
+    assert Franc.new(5).==(Franc.new(5))
+    refute Franc.new(5).==(Franc.new(6))
   end
 
 end
