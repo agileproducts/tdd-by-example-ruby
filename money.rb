@@ -10,7 +10,7 @@ class Money
   end
 
   def ==(object)
-    return @amount == object.amount
+    return @amount == object.amount && self.class == object.class
   end
 
 end
@@ -20,5 +20,5 @@ class Dollar < Money
 end
 
 class Franc < Money
-  
+
 end
