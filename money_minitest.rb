@@ -8,15 +8,15 @@ class TestDollar < Minitest::Test
   end
 
   def test_multiplication
-    dollars = @fivedollars.times(2)
-    assert_equal 10, dollars.amount
-    dollars = @fivedollars.times(3)
-    assert_equal 15, dollars.amount
+    tendollars = @fivedollars.times(2)
+    assert_equal Dollar.new(10), tendollars
+    fifteendollars = @fivedollars.times(3)
+    assert_equal Dollar.new(15), fifteendollars
   end
 
   def test_equality
-    assert Dollar.new(5).equals(Dollar.new(5))
-    refute Dollar.new(5).equals(Dollar.new(6))
+    assert Dollar.new(5).==(Dollar.new(5))
+    refute Dollar.new(5).==(Dollar.new(6))
   end
 
 end

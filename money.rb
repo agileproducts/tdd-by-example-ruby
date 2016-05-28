@@ -9,7 +9,7 @@ class Dollar
     return self.class.new(@amount * multiplier)
   end
 
-  def equals(object)
+  def ==(object)
     return @amount == object.amount
   end
 
