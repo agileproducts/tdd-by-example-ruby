@@ -1,24 +1,26 @@
 class Money
-  attr_reader :amount
+  attr_reader :amount, :currency
 
-  def initialize(amount)
+  def initialize(amount,currency)
     @amount = amount
+    @currency = currency
   end
 
   def times(multiplier)
-    return self.class.new(@amount * multiplier)
+    return self.class.new(@amount * multiplier, @currency)
   end
 
   def ==(object)
-    return @amount == object.amount && self.class == object.class
+    return @amount == object.amount && @currency == object.currency
+  end
+
+  def self.dollar(amount)
+    return self.new(amount,"USD")
+  end
+
+  def self.franc(amount)
+    return self.new(amount,"CHF")
   end
 
 end
 
-class Dollar < Money
-
-end
-
-class Franc < Money
-
-end
