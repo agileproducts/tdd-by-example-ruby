@@ -11,7 +11,7 @@ class Money
   end
 
   def ==(object)
-    return @amount == object.amount && @currency == object.currency
+    @amount == object.amount && @currency == object.currency
   end
 
   def self.dollar(amount)
@@ -20,6 +20,31 @@ class Money
 
   def self.franc(amount)
     return self.new(amount,"CHF")
+  end
+
+  def normalize(to_currency)
+    return self
+  end
+
+end
+
+class Bank
+  def self.normalize(expression,to_currency)
+    expression.normalize(to_currency)
+  end
+end
+
+
+class Sum
+
+  def initialize(augend, addend)
+    @augend = augend
+    @addend = addend
+  end
+
+  def normalize(to_currency)
+    amount = @augend.amount + @addend.amount
+    return Money.new(amount,to_currency)
   end
 
 end

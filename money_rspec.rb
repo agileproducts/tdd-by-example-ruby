@@ -22,4 +22,10 @@ describe Money do
     expect(Money.franc(1).currency).to eq "CHF"
   end
 
+  it "should be able to add two amounts of the same currency" do
+    sum = Sum.new(Money.dollar(5), Money.dollar(5))
+    normalized_sum = Bank.normalize(sum, "USD")
+    expect(normalized_sum).to eq(Money.dollar(10))
+  end
+
 end

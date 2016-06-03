@@ -18,8 +18,9 @@ class TestMoney < Minitest::Test
   end
 
   def test_addition
-    sum = Money.dollar(5) + Money.dollar(5)
-    assert_equal Money.dollar(10), sum
+    sum = Sum.new(Money.dollar(5), Money.dollar(5))
+    normalized_sum = Bank.normalize(sum, "USD")
+    assert_equal Money.dollar(10), normalized_sum
   end
 
   def test_equality
@@ -33,6 +34,11 @@ class TestMoney < Minitest::Test
   def test_currency
     assert "USD" == Money.dollar(1).currency
     assert "CHF" == Money.franc(1).currency
+  end
+
+  def test_normalization
+    result = Bank.normalize(Money.dollar(1), "USD")
+    assert_equal Money.dollar(1), result
   end
 
 
