@@ -17,6 +17,11 @@ class TestMoney < Minitest::Test
     assert_equal Money.franc(10), tenfrancs
   end
 
+  def test_addition
+    sum = Money.dollar(5) + Money.dollar(5)
+    assert_equal Money.dollar(10), sum
+  end
+
   def test_equality
     assert Money.dollar(5).==(Money.dollar(5))
     refute Money.dollar(5).==(Money.dollar(6))
