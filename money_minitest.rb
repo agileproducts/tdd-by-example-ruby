@@ -50,4 +50,13 @@ class TestMoney < Minitest::Test
     assert_equal Money.dollar(1), result
   end
 
+  def test_mixed_addition
+    natwest = Bank.new
+    natwest.set_rate("CHF","USD",0.5)
+    sum = Sum.new(Money.dollar(5), Money.franc(10))
+    exchanged_sum = natwest.exchange(sum, "USD")
+    assert_equal Money.dollar(10), exchanged_sum
+  end
+
+
 end

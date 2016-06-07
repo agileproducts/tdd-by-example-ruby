@@ -63,7 +63,7 @@ class Sum
   end
 
   def change(bank,to_currency)
-    amount = @augend.amount + @addend.amount
+    amount = @augend.change(bank,to_currency).amount + @addend.change(bank,to_currency).amount
     return Money.new(amount,to_currency)
   end
 

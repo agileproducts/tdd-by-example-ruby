@@ -36,6 +36,14 @@ describe Money do
     expect(exchanged_sum).to eq(Money.dollar(1))
   end
 
+  it "should be able to add mixed currencies" do
+    natwest = Bank.new
+    natwest.set_rate("CHF","USD",0.5)
+    sum = Sum.new(Money.franc(10), Money.dollar(5))
+    exchanged_sum = natwest.exchange(sum, "USD")
+    expect(exchanged_sum).to eq(Money.dollar(10))
+  end 
+
 
 end
 
