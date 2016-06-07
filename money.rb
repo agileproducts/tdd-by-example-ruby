@@ -22,15 +22,18 @@ class Money
     return self.new(amount,"CHF")
   end
 
-  def normalize(to_currency)
+  def change(to_currency)
     return self
   end
 
 end
 
 class Bank
-  def self.normalize(expression,to_currency)
-    expression.normalize(to_currency)
+  def initialize
+  end
+
+  def exchange(expression,to_currency)
+    expression.change(to_currency)
   end
 end
 
@@ -42,7 +45,7 @@ class Sum
     @addend = addend
   end
 
-  def normalize(to_currency)
+  def change(to_currency)
     amount = @augend.amount + @addend.amount
     return Money.new(amount,to_currency)
   end
