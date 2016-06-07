@@ -43,9 +43,11 @@ class TestMoney < Minitest::Test
     assert_equal Money.dollar(1), result
   end
 
-  #def test_normalize_to_different_currency
-  #  result = Bank.normalize(Money.franc(2), "USD")
-  #  assert_equal Money.dollar(1), result
-  #end
+  def test_exchanging_to_different_currency
+    natwest = Bank.new
+    natwest.set_rate("CHF","USD",0.5)
+    result = natwest.exchange(Money.franc(2), "USD")
+    assert_equal Money.dollar(1), result
+  end
 
 end

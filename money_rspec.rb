@@ -25,8 +25,17 @@ describe Money do
   it "should be able to add two amounts of the same currency" do
     natwest = Bank.new
     sum = Sum.new(Money.dollar(5), Money.dollar(5))
-    normalized_sum = natwest.exchange(sum, "USD")
-    expect(normalized_sum).to eq(Money.dollar(10))
+    exchanged_sum = natwest.exchange(sum, "USD")
+    expect(exchanged_sum).to eq(Money.dollar(10))
   end
 
+  it "should be able to exchange currencies" do
+    natwest = Bank.new
+    natwest.set_rate("CHF","USD",0.5)
+    exchanged_sum = natwest.exchange(Money.franc(2), "USD")
+    expect(exchanged_sum).to eq(Money.dollar(1))
+  end
+
+
 end
+
